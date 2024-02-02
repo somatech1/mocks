@@ -33,4 +33,4 @@ gives you a nicer sintax to write mocks
 		a.NoError(err)
 		a.Equal(output, expectedOutput)
 ```
-See more examples [/services_mock_test.go]
+See more [examples](/services_mock_test.go)

@@ -1,36 +1,56 @@
-### service-mock
+# service-mock
 
-Provides an easier way to mock services for testing purposes. 
-The wrapper on the `mockgen` tool from `go.uber.org/mock`,
-gives you a nicer sintax to write mocks
+## About
+
+This package provides an easier way to mock services for testing purposes. 
+The wrapper on the [mockgen](https://github.com/uber-go/mock) gives you a
+nicer syntax to write mocks.
+
+## Usage example
 
 ```go
-	    ctx := context.TODO()
-		a := assert.New(t)
+package main
 
-		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
-		// or let the compiler infer it
-		mock := NewMock(
-			t,
-			example_mock.NewMockExampleMock,
-		)
+import (
+    "context"
+    "testing"
+    
+    "github.com/stretchr/testify/assert"
+    smock "github.com/somatech1/services-mock"
+)
 
-		expectedInput := "Hello World"
-		expectedOutput := "Mocked Output"
+func TestFoo(t *testing.T) {
+    ctx := context.TODO()
+    a := assert.New(t)
 
-		mock.Mock(&MockOptions{
-			Ctx:    ctx,
-			Call:   mock.Recorder().GetByString,
-			Times:  1,
-			Input:  expectedInput,
-			Return: expectedOutput,
-		})
+    // You can explicitly define the mock type
+    // NewMock[example_mock.MockExampleMockMockRecorder]
+    // or let the compiler infer it
+    mock := smock.NewMock(
+        t,
+        example_mock.NewMockExampleMock,
+    )
 
-		c := mock.Client()
-		output, err := c.GetByString(ctx, expectedInput)
+    expectedInput := "Hello World"
+    expectedOutput := "Mocked Output"
 
-		a.NoError(err)
-		a.Equal(output, expectedOutput)
+    mock.Mock(&smock.MockOptions{
+        Ctx:    ctx,
+        Call:   mock.Recorder().GetByString,
+        Times:  1,
+        Input:  expectedInput,
+        Return: expectedOutput,
+    })
+
+    c := mock.Client()
+    output, err := c.GetByString(ctx, expectedInput)
+
+    a.NoError(err)
+    a.Equal(output, expectedOutput)
+}
 ```
-See more [examples](/services_mock_test.go)
+See more [examples](service_mock_test.go)
+
+## License
+
+[Mozilla Public License 2.0](LICENSE)

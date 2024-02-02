@@ -50,10 +50,10 @@ func NewMock[R any, T ServiceClient[R]](
 
 // NewMockWithCtrl returns a new mock service client that can be used to mock any service
 // client.
-
+//
 // The generic type R is the type of the RECORDER returned by the EXPECT method.
 // The generic type T is the type of the service client.
-
+//
 // Example:
 // NewMockWithCtrl[subscriptionv1mock.MockSubscriptionServiceClientMockRecorder](*gomock.Controller, subscriptionv1mock.NewMockSubscriptionServiceClient)
 func NewMockWithCtrl[R any, T ServiceClient[R]](

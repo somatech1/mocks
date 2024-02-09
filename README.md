@@ -1,4 +1,4 @@
-# service-mock
+# mock_s
 
 ## About
 
@@ -16,7 +16,7 @@ import (
     "testing"
     
     "github.com/stretchr/testify/assert"
-    smock "github.com/somatech1/services-mock"
+    "github.com/somatech1/mocks"
 )
 
 func TestFoo(t *testing.T) {
@@ -26,7 +26,7 @@ func TestFoo(t *testing.T) {
     // You can explicitly define the mock type
     // NewMock[example_mock.MockExampleMockMockRecorder]
     // or let the compiler infer it
-    mock := smock.NewMock(
+    mock := mocks.New(
         t,
         example_mock.NewMockExampleMock,
     )
@@ -34,7 +34,7 @@ func TestFoo(t *testing.T) {
     expectedInput := "Hello World"
     expectedOutput := "Mocked Output"
 
-    mock.Mock(&smock.MockOptions{
+    mock.Mock(&mocks.MockOptions{
         Ctx:    ctx,
         Call:   mock.Recorder().GetByString,
         Times:  1,

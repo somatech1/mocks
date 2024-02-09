@@ -13,7 +13,7 @@ import (
 	context "context"
 	reflect "reflect"
 
-	example "github.com/somatech1/services-mock/internal/example"
+	example "github.com/somatech1/mocks/internal/example"
 	gomock "go.uber.org/mock/gomock"
 )
 

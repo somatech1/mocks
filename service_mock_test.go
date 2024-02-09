@@ -7,8 +7,8 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/somatech1/services-mock/internal/example"
-	example_mock "github.com/somatech1/services-mock/internal/example/mock"
+	"github.com/somatech1/mocks/internal/example"
+	example_mock "github.com/somatech1/mocks/internal/example/mock"
 )
 
 func TestGetByString(t *testing.T) {
@@ -17,9 +17,9 @@ func TestGetByString(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -46,9 +46,9 @@ func TestGetByString(t *testing.T) {
 		ctx := context.TODO()
 		a := assert.New(t)
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -80,9 +80,9 @@ func TestGetByInt(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -109,9 +109,9 @@ func TestGetByInt(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -141,9 +141,9 @@ func TestGetWithVariadic(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -173,9 +173,9 @@ func TestGetWithVariadic(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -205,9 +205,9 @@ func TestSingleError(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -235,9 +235,9 @@ func TestSingleError(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -266,9 +266,9 @@ func TestWithStruct(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -295,9 +295,9 @@ func TestWithStruct(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -326,9 +326,9 @@ func TestWithDoAndReturn(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -358,9 +358,9 @@ func TestWithDoAndReturn(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -393,9 +393,9 @@ func TestAny(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -423,9 +423,9 @@ func TestAny(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)
@@ -452,9 +452,9 @@ func TestAny(t *testing.T) {
 		a := assert.New(t)
 
 		// you can explicitly define the mock type
-		// NewMock[example_mock.MockExampleMockMockRecorder]
+		// New[example_mock.MockExampleMockMockRecorder]
 		// or let the compiler infer it
-		mock := NewMock(
+		mock := New(
 			t,
 			example_mock.NewMockExampleMock,
 		)

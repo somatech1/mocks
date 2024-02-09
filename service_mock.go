@@ -19,27 +19,54 @@ type (
 	FnNewClientService[T any] func(*gomock.Controller) T
 )
 
+// MockOptions provides all available options that a mocked call might have.
 type MockOptions struct {
-	Ctx                 interface{}
-	AnyTimes            bool
-	Times               int
-	Input               interface{}
-	Return              interface{}
-	Call                interface{}
-	Error               error
+	// Ctx stands for the current context that the call should receive. If
+	// it is nil, an internal default value is created.
+	Ctx interface{}
+
+	// AnyTimes is boolean flag to set that the call can be called 0 or more times.
+	AnyTimes bool
+
+	// Times represents the number of times that the call is going to be called.
+	Times int
+
+	// Input represents all the arguments that the call will receive. It can
+	// be a single argument or slice of interfaces, receiving as many argument
+	// as necessary. If omitted, all call required arguments will be created
+	// internally.
+	Input interface{}
+
+	// Return points to the successful return value of the call. It can be
+	// omitted when an error is desired.
+	Return interface{}
+
+	// Call is the call that is being mocked at the moment.
+	Call interface{}
+
+	// Error points to the error value of the call, if that is the desired
+	// behavior.
+	Error error
+
+	// SingleErrorReturned sets that the call returns only one return value,
+	// usually an error.
 	SingleErrorReturned bool
-	DoAndReturn         interface{}
+
+	// DoAndReturn declares the action to run when the call is matched.
+	// The return values from this function are returned by the mocked
+	// function.
+	DoAndReturn interface{}
 }
 
-// NewMock returns a new mock service client that can be used to mock any service
+// New returns a new mock service client that can be used to mock any service
 // client.
 //
 // The generic type R is the type of the RECORDER returned by the EXPECT method.
 // The generic type T is the type of the service client.
 //
 // Example:
-// NewMock[subscriptionv1mock.MockSubscriptionServiceClientMockRecorder](*testing.T, subscriptionv1mock.NewMockSubscriptionServiceClient)
-func NewMock[R any, T ServiceClient[R]](
+// New[subscriptionv1mock.MockSubscriptionServiceClientMockRecorder](*testing.T, subscriptionv1mock.NewMockSubscriptionServiceClient)
+func New[R any, T ServiceClient[R]](
 	t *testing.T,
 	fn FnNewClientService[T],
 ) *MockServiceClient[R, T] {
@@ -48,15 +75,15 @@ func NewMock[R any, T ServiceClient[R]](
 	}
 }
 
-// NewMockWithCtrl returns a new mock service client that can be used to mock any service
+// NewWithCtrl returns a new mock service client that can be used to mock any service
 // client.
 //
 // The generic type R is the type of the RECORDER returned by the EXPECT method.
 // The generic type T is the type of the service client.
 //
 // Example:
-// NewMockWithCtrl[subscriptionv1mock.MockSubscriptionServiceClientMockRecorder](*gomock.Controller, subscriptionv1mock.NewMockSubscriptionServiceClient)
-func NewMockWithCtrl[R any, T ServiceClient[R]](
+// NewWithCtrl[subscriptionv1mock.MockSubscriptionServiceClientMockRecorder](*gomock.Controller, subscriptionv1mock.NewMockSubscriptionServiceClient)
+func NewWithCtrl[R any, T ServiceClient[R]](
 	ctrl *gomock.Controller,
 	fn FnNewClientService[T],
 ) *MockServiceClient[R, T] {
@@ -157,8 +184,8 @@ func setupReturnValues(mockCall *gomock.Call, opts *MockOptions) {
 		mockCall.DoAndReturn(
 			opts.DoAndReturn,
 		)
-		setupTimes(mockCall, opts)
 
+		setupTimes(mockCall, opts)
 		return
 	}
 
@@ -166,16 +193,16 @@ func setupReturnValues(mockCall *gomock.Call, opts *MockOptions) {
 		mockCall.Return(
 			opts.Error,
 		)
-		setupTimes(mockCall, opts)
 
+		setupTimes(mockCall, opts)
 		return
 	}
 
 	rets := append(startReturnValues(opts), opts.Error)
-
 	mockCall.Return(
 		rets...,
 	)
+
 	setupTimes(mockCall, opts)
 }
 

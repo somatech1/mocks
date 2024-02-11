@@ -1,4 +1,4 @@
-module github.com/somatech1/services-mock
+module github.com/somatech1/mocks
 
 go 1.21.5
 

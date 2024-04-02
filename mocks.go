@@ -1,4 +1,4 @@
-package service_mock
+package mocks
 
 import (
 	"reflect"
